@@ -26,4 +26,4 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && count($_POST) > 0)
 }
 
 // Si no viene por POST ERROR 404
-render("pages/error404", ['title' => 'Error']);
+render("errors/error404", ['title' => 'Error']);
