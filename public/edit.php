@@ -51,7 +51,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && count($_POST) > 0)
     // Si no existe el id de usuario
     if( count( $rows ) == 0 )
     {
-        render("pages/error404", ['title' => 'Error']);
+        render("errors/error404", ['title' => 'Error']);
     }
 
     /* validar el nombre */
@@ -220,4 +220,4 @@ if (isset($_GET['user_id']) && !empty($_GET['user_id'])) {
     // apologize('You did not pass in an ID!.');
 }
 
-render("pages/error404", ['title' => 'Error']);
+render("errors/error404", ['title' => 'Error']);
