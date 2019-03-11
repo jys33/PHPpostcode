@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <!-- DataTables CDN-->
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" />
+        <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap4.min.css" />
+
+        <!-- Font-awesome -->
+        <!-- <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js" integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP" crossorigin="anonymous"></script> -->
+
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+        <?php if( isset($title) ): ?>
+        <title>PHPpostcode - <?= htmlspecialchars( $title ) ?></title>
+        <?php else: ?>
+        <title>PHPpostcode</title>
+        <?php endif ?>
+    </head>
+    <body>
+        <?php require_once 'navbar.phtml' ?>
+        <main class="container" role="main">

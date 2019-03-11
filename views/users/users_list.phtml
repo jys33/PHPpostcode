@@ -1,0 +1,74 @@
+<!-- Table de usuarios -->
+<section class="my-4">
+    <div class="container fs-14">
+        <?php 
+            flash('flash_success'); 
+            flash('flash_error'); 
+        ?>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <h3>Users <a class="btn btn-sm btn-success shadow-none" href="<?= BASE_URL ?>/public/register.php"><i class="fas fa-plus"></i> Add</a></h3>
+            </div>
+            <div class="col-md-6">
+                <div class="float-right">
+                    <a class="btn btn-sm btn-light shadow-none" href="<?= BASE_URL ?>/public/exportData.php" title="Export csv"><i class="fas fa-file-export"></i> Export cvs</a>
+                    <a href="javascript:void(0);" class="btn btn-sm btn-light shadow-none" onclick="formToggle('importFrm');" title="Import csv"><i class="fas fa-file-import"></i> Import cvs</a>
+                </div>
+            </div>
+
+            <!-- CSV file upload form -->
+            <div class="col-md-12" id="importFrm" style="display: none;">
+                <form action="<?= BASE_URL ?>/public/importData.php" method="post" enctype="multipart/form-data">
+                    <input type="file" name="file" />
+                    <button type="submit" class="btn btn-primary btn-sm shadow-none" name="importSubmit">Import</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="table-responsive-md">
+            <table id="myTable" class="table table-bordered table-hover nowrap" style="width:100%">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>#</th><th>Apellido</th><th>Nombre</th><th>Usuario</th><th>Domicilio</th>
+                        <th>Localidad</th><th>Cp</th><th>Provincia</th><th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                        $nro = 1;
+                       foreach ($users as $key => $user) {
+                            echo '<tr>';
+                            // $user['reg_date'] = formatDateTime(new DateTime($user['reg_date']));
+                            echo '<td>' . $nro++ . '</td>';
+                            echo '<td>' . $user['lastname'] . '</td>';
+                            echo '<td>' . $user['firstname'] . '</td>';
+                            echo '<td>' . $user['username'] . '</td>';
+                            echo '<td>' . $user['address'] . '</td>';
+                            echo '<td>' . $user['localidad'] . '</td>';
+                            echo '<td class="text-info">' . $user['cp'] . '</td>';
+                            echo '<td>' . $user['provincia'] . '</td>';
+                            // echo '<td>&nbsp;</td>';
+                            echo '<td><form class="display-inline" action="edit.php"><input type="hidden" name="user_id" value="' . $user['user_id'] . '"></input>
+                            <button type="submit" class="btn btn-warning btn-sm shadow-none" name="editUser" value="edit" title="Edit">Edit</button></form>
+                            <form class="display-inline" action="delete.php" method="POST"><input type="hidden" name="user_id" value="' . $user['user_id'] . '"></input>
+                                <button type="submit" class="btn btn-danger btn-sm shadow-none" name="deleteUser" value="delete" data-toggle="popover" title="¿Estás seguro?" data-content="Está acción no se puede deshacer!." data-trigger="hover" data-placement="top" data-container="body">Delete</button></form></td>';
+                            echo '</tr>';
+                        }
+                    ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- Show/hide CSV upload form -->
+<script>
+function formToggle(ID){
+    var element = document.getElementById(ID);
+    if(element.style.display === "none"){
+        element.style.display = "block";
+    }else{
+        element.style.display = "none";
+    }
+}
+</script>
