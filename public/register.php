@@ -45,13 +45,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && count($_POST) > 0)
         // check if e-mail address is well-formed
         if (!filter_var($data['useremail'], FILTER_VALIDATE_EMAIL)) {
             $data['useremail_err'] = "La dirección de correo electrónico no es válida.";
-        }
-        // consultamos la tabla user por el email
-        $rows = query('SELECT user_id FROM user WHERE useremail=?', $data['useremail']);
+        } else {
+            // consultamos la tabla user por el email
+            $rows = query('SELECT user_id FROM user WHERE useremail=?', $data['useremail']);
 
-        // Si existe el nombre de usuario
-        if( count($rows) != 0 ){
-            $data['useremail_err'] = 'Este email ya está tomado.';
+            // Si existe el usuario
+            if( count($rows) != 0 ){
+                $data['useremail_err'] = 'Este email ya está tomado.';
+            }
         }
     }
 

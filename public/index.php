@@ -7,4 +7,4 @@ $data = [
     'users' => query('SELECT * FROM getUsers')
 ];
 
-render('users/users_list', $data);
+render('users/list', $data);
