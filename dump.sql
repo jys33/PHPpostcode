@@ -22926,7 +22926,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `apellido`, `nombre`, `domicilio`, `usuario`, `email`, `password`, `deleted`, `reg_date`, `last_update`, `fk_localidad`) VALUES
-(1, 'Silva', 'Julio Cesar', 'B° El progreso Manz. B Ca. 7', 'kingpin', 'jys33@gmail.com', '$2y$10$Dm6JMz6pNYJtju3qtEJMTOZ8dsP4UF400bBO7WwA6sP', 0, '2019-02-24 17:11:26', NULL, 5495),
+(1, 'Silva', 'Julio Cesar', 'GRAL. LAVALLE 734', 'kingpin', 'jys33@gmail.com', '$2y$10$Dm6JMz6pNYJtju3qtEJMTOZ8dsP4UF400bBO7WwA6sP', 0, '2019-02-24 17:11:26', NULL, 5495),
 (2, 'Calle', 'Rosario', 'Cnel. Brandsen 1997', 'rochi', 'lachinarochi@gmail.com', '$2y$10$v9HZWJs0U.6MlJZpZrLi1OpYIHIJkNfCWM2jt4y181V', 0, '2019-02-24 17:12:18', NULL, 16441),
 (3, 'Farfan Esteban', 'Luis Enrique', 'Manz. 18 Ca. 10 s/n Victor Arrudi', 'peluche', 'luis_enrique@gmail.com', '$2y$10$rC/f16b4VzfNhtaVU7S93OhkteaBORUTyMGpXgXo3za', 0, '2019-02-24 17:14:06', NULL, 11192);
 

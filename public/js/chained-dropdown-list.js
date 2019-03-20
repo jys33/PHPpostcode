@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let lista = document.getElementById("province");
         let provincia = lista.options[lista.selectedIndex].value;
 
-        let listaLocalidad = document.getElementById("locality");
+        let listaLocalidad = document.getElementById("localidad");
 
         if(provincia != "" && lista.selectedIndex != 0){
             listaLocalidad.removeAttribute("disabled");
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
     {
         if (peticion.readyState == 4) {
             if (peticion.status == 200) {
-                let lista = document.getElementById("locality");
+                let lista = document.getElementById("localidad");
                 // let localidades = eval('(' + peticion.responseText + ')');
                 let localidades = JSON.parse(peticion.responseText);
 
