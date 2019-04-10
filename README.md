@@ -12,4 +12,4 @@ PD:
 Dentro de la carpeta json, se encuetra el archivo help.php, el cuál se utilizó para insertar en la base de datos las localidades de acuerdo a las provincias, uno por uno se fue leyendo cada archivo .json según la provincia y se fue cambiando la fk para que haga referencia al id en la tabla provincia.
 
 DataTables Responsive
-https://datatables.net/extensions/responsive/examples/display-types/bootstrap4-modal.html
+https://datatables.net/extensions/responsive/examples/styling/bootstrap4.html
