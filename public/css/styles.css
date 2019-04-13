@@ -9,6 +9,10 @@ body {
     outline: none;
     box-shadow: none;
 }
+/*Paginación*/
+.page-link, .btn{
+  box-shadow: none!important;
+}
 .form-control.is-invalid:focus,
 .custom-select.is-invalid:focus {
     box-shadow: none;
@@ -137,8 +141,3 @@ label {
   }
 }
 /*END BACK TO TOP*/
-
-/*Paginación*/
-.page-link{
-  box-shadow: none!important;
-}

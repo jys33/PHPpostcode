@@ -162,7 +162,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && count($_POST) > 0)
         $dateTime = date("Y-m-d G:i:s");
         $password = password_hash($data['password'] . '!"#$%&tsSdf54gH', PASSWORD_DEFAULT);
 
-        $q = 'INSERT INTO user (lastname, firstname, address, username, useremail, password, reg_date, fk_localidad) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
+        $q = 'INSERT INTO user (lastname, firstname, address, username, useremail, password, created, fk_localidad) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
 
         $rows = query($q, $data['lastname'], $data['firstname'], $data['address'], $data['username'], $data['useremail'], $password, $dateTime, $data['localidad']);
 

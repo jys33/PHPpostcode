@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (peticion) {
                     peticion.onreadystatechange = muestraLocalidades;
 
-                    peticion.open("POST", "http://localhost/postcode/json/facade.php?nocache=" + Math.random(), true);
+                    peticion.open("POST", "http://localhost:8000/facade.php?nocache=" + Math.random(), true);
                     peticion.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                     peticion.send("provincia=" + provincia);
                 }
