@@ -58,6 +58,9 @@ label {
 @media (min-width: 768px) {
   .container--md {
     max-width: 462.5px; } }
+@media (min-width: 768px) {
+  .container--mx {
+    max-width: 462.5px; } }
 
 .display-inline {
     display: inline;

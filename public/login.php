@@ -10,5 +10,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	# code...
 } else {
 	// else render form
-	render("users/login_form", $data);
+	render("users/signup_form", $data);
 }

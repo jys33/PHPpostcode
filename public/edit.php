@@ -95,7 +95,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && count($_POST) > 0)
 
         if( !preg_match("/^[a-zA-Z0-9]{3,20}$/", $data['username']) ){
             $data['username_err'] = 'El nombre de usuario debe contener entre 3 
-            y 20 caracteres, números o letras sin tíldes.';
+            y 20 caracteres, números o letras sin tíldes, ni espacios.';
         }
     }
 
