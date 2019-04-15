@@ -6,16 +6,16 @@
 				<?php flash('flash_success'); flash('flash_error'); ?>
 				<h1 class="mb-1 text-center" style="font-size: 34px">Inicia sesión</h1>
 				<p class="fs-14 text-muted text-center mb-5">Complete sus datos para ingresar en la app.</p>
-				<form name="loginform" id="loginform" action="/login.php" method="POST">
+				<form id="loginform" action="/login.php" method="POST">
 					<div class="form-group">
 						<label for="email">Correo electrónico</label>
-						<input type="email" name="email" class="form-control form-control-lg <?= empty($email_err) ? '' : 'is-invalid' ?>" size="20" value="<?= htmlspecialchars( $email )?>" autofocus>
-						<div class="invalid-feedback"><?= $email_err ?></div>
+						<input type="email" name="useremail" class="form-control form-control-lg <?= empty($useremail_err) ? '' : 'is-invalid' ?>" size="20" value="<?= htmlspecialchars( $useremail )?>" autofocus>
+						<div class="invalid-feedback"><?= $useremail_err ?></div>
 					</div>
 					<div class="form-group">
 						<label for="password">Contraseña</label>
 						<a class="form-sublink" href="">¿Olvidó su contraseña?</a>
-						<input type="text" name="password" class="form-control form-control-lg <?= empty($password_err) ? '' : 'is-invalid' ?>" size="20">
+						<input type="password" name="password" class="form-control form-control-lg <?= empty($password_err) ? '' : 'is-invalid' ?>" size="20">
 						<div class="invalid-feedback"><?= $password_err ?></div>
 					</div>
 					<div class="form-group">

@@ -3,8 +3,7 @@
 require_once('../includes/config.php');
 
 $data = [
-    'title' => 'Lista de usuarios',
-    'users' => query('SELECT * FROM getUsers')
+	'title' => 'Lista de usuarios',
 ];
 
-render('users/list', $data);
+render('pages/welcome', $data);

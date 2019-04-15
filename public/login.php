@@ -4,60 +4,50 @@ require("../includes/config.php");
 
 $data = [
 	'title' => 'Iniciar sesión',
-	'email' => '',
+	'useremail' => '',
 	'password' => '',
 	// Error
-	'email_err' => '',
+	'useremail_err' => '',
 	'password_err' => ''
 ];
 
 /**
  * Si el método de solicitud es POST procesamos lo que venga del formulario
  */
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && count($_POST) > 1) {
 
 	/**
-	 * Validamos el email
+	 * Comprobamos que el email no este vacío
 	 */
-	if ( isset($_POST['email']) ) {
-		if (!empty($_POST['email'])) {
-			// $data['email'] = $trimmed['email'];
-			$data['email'] = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
-		} else {
-			$data['email_err'] = 'Un correo electrónico es necesario para iniciar sesión.';
-		}
+	if (!empty($_POST['useremail'])) {
+		// $data['useremail'] = $_POST['useremail'];
+		$data['useremail'] = filter_var($_POST['useremail'], FILTER_SANITIZE_EMAIL);
 	} else {
-		$data['email_err'] = 'Error, no existe la variable email.';
+		$data['useremail_err'] = 'Un correo electrónico es necesario para iniciar sesión.';
 	}
 
 	/**
-	 * Validamos la password
+	 * Comprobamos que la password no este vacía
 	 */
-	if ( isset($_POST['password']) ) {
-		if (!empty($_POST['password'])) {
-			$data['password'] = $_POST['password'];
-		} else {
-			$data['password_err'] = 'Se requiere una contraseña para iniciar sesión.';
-		}
+	if (!empty($_POST['password'])) {
+		$data['password'] = $_POST['password'];
 	} else {
-		$data['password_err'] = 'Error, no existe la variable password.';
+		$data['password_err'] = 'Se requiere una contraseña para iniciar sesión.';
 	}
 
 	/**
 	 * Si todo esta ok
 	 */
-	if (empty($data['email_err']) && empty($data['password_err'])) {
+	if (empty($data['useremail_err']) && empty($data['password_err'])) {
 	    // 
-		$rows = query("SELECT * FROM user WHERE email = ?", $data["email"]);
+		$rows = query("SELECT * FROM user WHERE useremail = ?", $data["useremail"]);
 		// Si encontramos al usuario
 		if (count($rows) == 1) {
 
 			$user = $rows[0];
-
-			if (password_verify( $data["password"] . 'Nh-Tw3M-cRW)', $user['password'] ) == $user['password']) {
+			if (password_verify($data['password'] . 'Nh-Tw3M-cRW)', $user['password'] ) == $user['password']) {
 				// remember that user's now logged in by storing user's ID in session
-				$_SESSION["user_id"] = $row["user_id"];
-
+				$_SESSION["user_id"] = $user["user_id"];
 				// redirect to portfolio
 				redirect("/");
 			}
@@ -68,5 +58,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 // else render form
 render("users/login_form", $data);
-
-// ¡Bienvenido a Khan Academy!

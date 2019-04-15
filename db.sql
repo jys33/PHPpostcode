@@ -59,7 +59,7 @@ CREATE TABLE `user` (
   `apellido` VARCHAR(50) NOT NULL,
   `nombre` VARCHAR(50) NOT NULL,
   `useremail` VARCHAR (50) NOT NULL,
-  `password` VARCHAR(50) NOT NULL,
+  `password` VARCHAR(255) NOT NULL,
   `deleted` TINYINT(1) NOT NULL DEFAULT '0',
   `created` DATETIME NOT NULL,
   `modified` DATETIME ON UPDATE CURRENT_TIMESTAMP,

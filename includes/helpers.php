@@ -40,6 +40,25 @@ function redirect($destination)
 }
 
 /**
+ * Logs out current user, if any.  Based on Example #1 at
+ * http://us.php.net/manual/en/function.session-destroy.php.
+ */
+function logout()
+{
+    // unset any session variables
+    $_SESSION = array();
+
+    // expire cookie
+    if (!empty($_COOKIE[session_name()]))
+    {
+        setcookie(session_name(), "", time() - 42000);
+    }
+
+    // destroy session
+    session_destroy();
+}
+
+/**
  * Executes SQL statement, possibly with parameters, returning
  * an array of all rows in result set or false on (non-fatal) error.
  */

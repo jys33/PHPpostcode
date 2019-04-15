@@ -75,6 +75,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && count($_POST) > 3) {
 	if (!empty($trimmed['password'])) {
 		if ( !validatePasswordStrength( $trimmed['password'] ) ) {
 			$data['password_err'] = 'La contraseña debe tener al menos 8 caracteres de longitud y tener al menos una letra mayúscula, un número y un carácter especial.';
+		} else {
+			$data['password'] = $trimmed['password'];
 		}
 	} else {
 		$data['password_err'] = 'Crea una contraseña.';
