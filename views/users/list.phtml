@@ -45,12 +45,13 @@
                             <td class="text-info"><?= $user['cp'] ?></td>
                             <td><?= $user['provincia'] ?></td>
                             <td>
-                                <form class="display-inline" action="/edit.php">
+                                <form class="d-inline" action="/edit.php">
                                     <input type="hidden" name="user_id" value="<?= $user['user_id'] ?>"></input>
                                     <button type="submit" class="btn btn-warning btn-sm" name="editUser" value="edit" title="Edit">Edit</button></form>
-                                <form class="display-inline" action="/delete.php" method="POST">
+                                <form class="d-inline" action="/delete.php" method="POST">
                                     <input type="hidden" name="user_id" value="<?= $user['user_id'] ?>"></input>
-                                    <button type="submit" class="btn btn-danger btn-sm" name="deleteUser" value="delete" onclick="return confirm('¿Estas absolutamente seguro?')">Delete</button></form>
+                                    <button type="submit" class="btn btn-danger btn-sm" name="deleteUser" value="delete" onclick="return confirm('¿Estas absolutamente seguro?')">Delete</button>
+                                </form>
                             </td>
                         </tr>
                     <?php endforeach ?>

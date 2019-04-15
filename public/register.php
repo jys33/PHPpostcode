@@ -180,4 +180,4 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && count($_POST) > 0)
 }
 
 // else render form
-render("users/register_form", $data);
+render("users/signup_form", $data);

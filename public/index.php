@@ -1,6 +1,6 @@
 <?php
 
-require_once('../includes/helpers.php');
+require_once('../includes/config.php');
 
 $data = [
     'title' => 'Lista de usuarios',

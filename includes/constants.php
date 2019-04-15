@@ -21,10 +21,4 @@ define("USERNAME", "root");
 define('APPROOT', dirname(dirname(__FILE__)));
 
 //
-define('BASE_URL','http://localhost/postcode');
-
-// Establece la zona horaria predeterminada 
-date_default_timezone_set('America/Argentina/Buenos_Aires');
-
-// enable sessions
-session_start();
+define('BASE_URL','http://localhost:8000');

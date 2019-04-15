@@ -176,3 +176,24 @@ function apologize($message)
     render("pages/apology", ["message" => $message]);
     exit;
 }
+
+/*
+ * Validate Password Strength
+ * - Password must be at least 8 characters in length.
+ * - Password must include at least one upper case letter.
+ * - Password must include at least one number.
+ * - Password must include at least one special character.
+ */
+function validatePasswordStrength($password) {
+
+    $uppercase = preg_match('@[A-Z]@', $password);
+    $lowercase = preg_match('@[a-z]@', $password);
+    $number    = preg_match('@[0-9]@', $password);
+    $specialChars = preg_match('@[^\w]@', $password);
+
+    if(!$uppercase || !$lowercase || !$number || !$specialChars || strlen($password) < 8) {
+        return false;
+    }else{
+        return true;
+    }
+}

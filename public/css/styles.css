@@ -58,14 +58,6 @@ label {
 @media (min-width: 768px) {
   .container--md {
     max-width: 462.5px; } }
-@media (min-width: 768px) {
-  .container--mx {
-    max-width: 462.5px; } }
-
-.display-inline {
-    display: inline;
-    margin: 3px;
-}
 .svg-down{
     padding-left: calc(1.5em + .75rem);
     background-image: url('../img/download-solid.svg');

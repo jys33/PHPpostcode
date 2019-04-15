@@ -1,76 +1,64 @@
-<section class="my-4">
-	<div class="row">
-		<div class="container" style="max-width: 400px"><!--col-md-4 offset-md-4-->
-			<form>
-				<div class="form-group">
-					<label for="email">Tu correo electrónico <span class="required">*</span></label>
-					<input type="text" name="email" id="email" class="form-control form-control-lg" autofocus placeholder="ejemplo@email.com">
-				</div>
-				<div class="form-row">
-					<div class="col-md-6 mb-3">
-						<label for="nombre">Nombre <span class="required">*</span></label>
-						<input type="text" name="nombre" id="nombre" class="form-control form-control-lg">
-					</div>
-					<div class="col-md-6 mb-3">
-						<label for="apellido">Apellido <span class="required">*</span></label>
-						<input type="text" name="apellido" id="apellido" class="form-control form-control-lg">
-					</div>
-				</div>
-				<div class="form-group mb-5">
-					<label for="password" class="d-block">Crea una contraseña <span class="required">*</span></label>
-					<div id="passwordHelpInline" class="text-muted" style="font-size: 12px; margin-bottom: 4px;">Las contraseñas deben tener por lo menos 8 caracteres y tener una combinación de letras, números y otros caracteres.</div>
-					<input type="password" name="password" id="password" class="form-control form-control-lg" aria-describedby="passwordHelpInline">
-				</div>
-				<div class="row">
-					<div class="col-6 mb-3">
-						<a href="javascript:void(0)" class="">Atrás</a>
-						<!-- <a href="javascript:history.go(-1);">Back</a> -->
-					</div>
-					<div class="col-6 mb-3">
-						<button type="submit" class="btn btn-success float-right">Regístrate</button>
-					</div>
-				</div>
-			</form>
-		</div>
-	</div>
-</section>
-<!-- Por favor dinos tu nombre propio.
-Crea una contraseña. font-size-12px
-Por favor dinos tu apellido.
-Por favor dinos tu dirección de correo electrónico.
-Este correo electrónico no parece estar formado correctamente. -->
-<section class="section">
+<section class="mt-4">
 	<div class="container">
 		<div class="row">
-			<div class="container container--mini">
-				<img class="img-fluid mx-auto d-block mb-5" style="width: 65px; height: 65px" src="" alt="">
-				<form name="loginform" id="loginform" action="" method="">
+			<div class="container container--xs"><!--col-md-4 offset-md-4-->
+				<h1 class="mb-1 text-center" style="font-size: 34px">Regístrese</h1>
+				<p class="fs-14 text-muted text-center mb-5">Ingresa tus datos para crear tu cuenta personal.</p>
+				<form action="/signup-form.php" method="POST">
 					<div class="form-group">
-						<label for="email">Correo electrónico</label>
-						<input type="email" name="email" class="form-control form-control-lg" size="20">
+						<label for="email">Tu correo electrónico <span class="required">*</span></label>
+						<input type="text" name="useremail" id="useremail" class="form-control form-control-lg <?= empty($useremail_err) ? '' : 'is-invalid' ?>" autofocus placeholder="ejemplo@email.com" value="<?= htmlspecialchars( $useremail ) ?>" size="20">
+						<div class="invalid-feedback"><?= $useremail_err  ?></div>
 					</div>
-					<div class="form-group">
-						<label for="password">Password</label>
-						<a class="form-sublink" href="">¿Olvidó su contraseña?</a>
-						<input type="text" name="pwd" class="form-control form-control-lg" size="20">
+					<div class="form-row">
+						<div class="col-md-6 mb-3">
+							<label for="nombre">Nombre <span class="required">*</span></label>
+							<input type="text" name="nombre" id="nombre" class="form-control form-control-lg <?= empty($nombre_err) ? '' : 'is-invalid' ?>" value="<?= htmlspecialchars( $nombre ) ?>" size="20">
+							<div class="invalid-feedback"><?= $nombre_err ?></div>
+						</div>
+						<div class="col-md-6 mb-3">
+							<label for="apellido">Apellido <span class="required">*</span></label>
+							<input type="text" name="apellido" id="apellido" class="form-control form-control-lg <?= empty($apellido_err) ? '' : 'is-invalid' ?>" value="<?= htmlspecialchars( $apellido ) ?>" size="20">
+							<div class="invalid-feedback"><?= $apellido_err  ?></div>
+						</div>
 					</div>
-					<div class="form-group">
-						<button type="submit" class="btn btn-block btn-success">Iniciar sesión</button>
+					<div class="form-group mb-4">
+						<label for="password" class="d-block">Crea una contraseña <span class="required">*</span></label>
+						<div id="passwordHelpInline" class="text-muted mb-1" style="font-size: 12px;">Las contraseñas deben tener por lo menos 8 caracteres y tener una combinación de letras, números y otros caracteres.</div>
+						<input type="password" name="password" id="password" class="form-control form-control-lg <?= empty($password_err) ? '' : 'is-invalid' ?>" aria-describedby="passwordHelpInline" size="20">
+						<div class="invalid-feedback"><?= $password_err  ?></div>
+					</div>
+					<div class="row">
+						<div class="col-6">
+							<a href="/" class="small" style="vertical-align: -6px;">Atrás</a>
+							<!-- <a href="javascript:history.go(-1);">Back</a> -->
+						</div>
+						<div class="col-6">
+							<button type="submit" class="btn btn-success float-right px">Regístrate</button>
+						</div>
 					</div>
 				</form>
-				<p class="small text-center text-gray-soft">¿Aún no tienes una cuenta? <a href="/">Regístrese</a></p>
+				<!-- <p class="small text-center text-muted">¿Ya tienes una cuenta? <a href="/">Inicia sesión</a></p> -->
 			</div>
 		</div>
 	</div>
 </section>
+
 <style type="text/css">
 	/* BOOTSTRAP VARIABLES */
 	@media (min-width: 768px) {
 	  .container--xs {
-	    max-width: 570px; } }
+	    max-width: 405px; } }
 
 	@media (min-width: 768px) {
 	  .container--mini {
 	    max-width: 380px; } }
-	.text-gray-soft {color: #838E95 !important;}
+	.px {
+		/*padding-left: 2rem;
+		padding-right: 2rem;*/
+		padding: .375rem 2.5rem;
+	}
+	.invalid-feedback {
+		font-size: 12px;
+	}
 </style>

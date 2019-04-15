@@ -56,42 +56,19 @@ CREATE TABLE `localidad` (
 
 CREATE TABLE `user` (
   `user_id` INT(11) NOT NULL AUTO_INCREMENT,
-  `lastname` VARCHAR(50) NOT NULL,
-  `firstname` VARCHAR(50) NOT NULL,
-  `address` VARCHAR(50) NOT NULL,
-  `username` VARCHAR(50) NOT NULL,
+  `apellido` VARCHAR(50) NOT NULL,
+  `nombre` VARCHAR(50) NOT NULL,
   `useremail` VARCHAR (50) NOT NULL,
   `password` VARCHAR(50) NOT NULL,
   `deleted` TINYINT(1) NOT NULL DEFAULT '0',
   `created` DATETIME NOT NULL,
-  `modified` DATETIME DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `fk_localidad` INT(11) UNSIGNED NOT NULL COMMENT 'foreign key a la tabla localidad',
+  `modified` DATETIME ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`user_id`),
-  KEY `fk_localidad` (`fk_localidad`),
-  UNIQUE KEY `useremail` (`useremail`),
-  CONSTRAINT `user_ibfk_1` FOREIGN KEY (`fk_localidad`) REFERENCES `localidad` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  UNIQUE KEY `useremail` (`useremail`)
 ) ENGINE = InnoDB CHARSET=utf8 COLLATE utf8_general_ci;
 
-#CREACION DE UNA VISTA
-CREATE 
-/*[ALGORITHM = {UNDEFINED | MERGE | TEMPTABLE}]
-    [DEFINER = { user | CURRENT_USER }]
-    [SQL SECURITY { DEFINER | INVOKER }]*/
-VIEW `postcode`.`getUsers` AS 
-(SELECT 
-  u.*,
-  l.id id_localidad,
-  l.localidad,
-  l.cp,
-  p.provincia 
-FROM
-  user AS u 
-  INNER JOIN localidad AS l 
-    ON u.fk_localidad = l.id 
-  INNER JOIN provincia AS p 
-    ON l.provincia = p.id) ;
-
-# LLAMADA A LA VISTA => SELECT * FROM getUsers;
+INSERT INTO user (apellido, nombre, useremail, password, created) VALUES
+('Silva', 'Julio César', 'ejemplo@gmail.com', '$2y$10$rJJ/g/5rxzmsjJPMkWFA7.J9XHRVa51WD2HNvOXfajM2.2XPNNNDa', '2019-04-14 17:11:26');
 
 INSERT INTO `localidad` (`id`, `localidad`, `cp`, `provincia`) VALUES
 (1111, 'CABEZA DE CHANCHO', '3061', 21),
