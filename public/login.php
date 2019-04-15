@@ -20,8 +20,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && count($_POST) > 1) {
 	 * Comprobamos que el email no este vacío
 	 */
 	if (!empty($_POST['useremail'])) {
-		// $data['useremail'] = $_POST['useremail'];
-		$data['useremail'] = filter_var($_POST['useremail'], FILTER_SANITIZE_EMAIL);
+		$data['useremail'] = $_POST['useremail'];
+		// $data['useremail'] = filter_var($_POST['useremail'], FILTER_SANITIZE_EMAIL);
 	} else {
 		$data['useremail_err'] = 'Un correo electrónico es necesario para iniciar sesión.';
 	}
