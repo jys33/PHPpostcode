@@ -1,6 +1,9 @@
 <?php
 
-require("../includes/config.php"); 
+require("../includes/config.php");
+require_once 'BaseDao.php';
+require_once 'UserDao.php';
+require_once 'User.php';
 
 $data = [
 	'title' => 'Registrar usuario',
@@ -16,7 +19,7 @@ $data = [
 ];
 
 /**
- * Si el método de solicitud es POST y existan todas las variables 
+ * Si el método de solicitud es POST y existen todas las variables 
  * procesamos lo que venga del formulario
  */
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && count($_POST) > 3) {
@@ -27,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && count($_POST) > 3) {
 	$trimmed = array_map('trim', $_POST);
 
 	/**
-	 * Validamos el email y comprobamos si no existe el email en la base de datos
+	 * Validamos el email y comprobamos si no existe en la base de datos
 	 */
 	if (!empty($trimmed['useremail'])) {
 		$data['useremail'] = filter_var($trimmed['useremail'], FILTER_SANITIZE_EMAIL);
@@ -54,11 +57,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && count($_POST) > 3) {
 		    $data['nombre_err'] = 'Sólo se permiten letras y espacios en blanco.';
 		}
 	} else {
-		$data['nombre_err'] = 'Por favor dinos tu nombre propio.';
+		$data['nombre_err'] = 'Por favor dinos tu nombre.';
 	}
 
 	/**
-	 * Vaidamos el apellido
+	 * Validamos el apellido
 	 */
 	if (!empty($trimmed['apellido'])) {
 		$data['apellido'] = $trimmed['apellido'];
@@ -90,7 +93,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && count($_POST) > 3) {
 		empty($data['apellido_err']) && empty($data['password_err'])
 	) {
 		// Procesamos insertando los datos en la DB y redirigimos
-		$sql = 'INSERT INTO user (apellido, nombre, useremail, password, created) VALUES (?,?,?,?,?)';
+		/*$sql = 'INSERT INTO user (apellido, nombre, useremail, password, created) VALUES (?,?,?,?,?)';
 	    $dateTime = date("Y-m-d H:i:s");
 	    $pwd = password_hash($data['password'] . 'Nh-Tw3M-cRW)', PASSWORD_DEFAULT);
 	    $result = query($sql, $data['apellido'], $data['nombre'], $data['useremail'], $pwd, $dateTime);
@@ -100,7 +103,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && count($_POST) > 3) {
 	        flash('flash_success', 'Su cuenta ha sido creada, ahora puedes iniciar sesión.');
 	        // re dirigimos al usuario a la página de inicio
 	        redirect('/');
+	    }*/
+	    $userDao = new UserDao;
+	    $user = new User;
+	    $user->assoc($userDao);
+	    // Prueba de inserción en la tabla user
+	    $userData = [
+	        'apellido' => $data['apellido'],
+	        'nombre' => $data['nombre'],
+	        'useremail' => $data['useremail'],
+	        'password' => password_hash($data['password'] . 'Nh-Tw3M-cRW)', PASSWORD_DEFAULT),
+	        'created' => date("Y-m-d H:i:s")
+	    ];
+
+	    if ($user->addUser($userData)) {
+	        flash('flash_success', 'Su cuenta ha sido creada, ahora puedes iniciar sesión.');
+	        redirect('/');
 	    }
+	    // seteamos el mensage flash para la vista
+	    flash('flash_error', 'Su cuenta no ha sido creada, intenté en unos minutos.', 'alert alert-danger');
     }
 }
 // else render form

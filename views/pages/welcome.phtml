@@ -1,5 +1,10 @@
 <section>
-	<div class="row">
-		<p>¡Bienvenido a PHPpostcode!</p>
+	<div class="row justify-content-center">
+		<h1 class="display-4">¡Bienvenido <?= $user->nombre ?> a PHPpostcode!</h1>
+		<?php
+		echo '<pre>';
+		print_r($user);
+		echo '</pre>';
+		?>
 	</div>
 </section>

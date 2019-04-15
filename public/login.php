@@ -48,6 +48,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && count($_POST) > 1) {
 			if (password_verify($data['password'] . 'Nh-Tw3M-cRW)', $user['password'] ) == $user['password']) {
 				// remember that user's now logged in by storing user's ID in session
 				$_SESSION["user_id"] = $user["user_id"];
+				$_SESSION["apellido"] = $user["apellido"];
+				$_SESSION["nombre"] = $user["nombre"];
 				// redirect to portfolio
 				redirect("/");
 			}
