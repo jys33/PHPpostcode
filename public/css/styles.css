@@ -230,3 +230,32 @@ label {
      color: #777;
    }
  }
+
+/**
+ * 
+ */
+ /* ALERT */
+ .alert {
+   border: none;
+   color: #fff;
+   font-size: 13px;
+   margin-bottom: 0;
+ }
+
+ .alert-danger {
+   background: #f63d4d; }
+
+ .alert-success {
+   background: #2AD8A2; }
+
+ .alert-brand {
+   background: #7952B3; }
+
+ .alert-warning {
+   background: #E5CC36; }
+
+ .navbar + .alert {
+   border-radius: 0; }
+
+ .alert + .alert {
+   margin-top: .5rem; }

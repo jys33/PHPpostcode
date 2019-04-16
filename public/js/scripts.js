@@ -103,7 +103,3 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // END BACK TO TOP
-
-$(function () {
-  $('[data-toggle="popover"]').popover()
-})
