@@ -152,7 +152,7 @@ function render($template, $values = [])
 /**
  * Show flash errors messages.
  */
-function flash($name = '', $message = '', $class = 'alert alert-success')
+function flash($name = '', $message = '', $class = 'success')
 {
     if(!empty($name)){
 
@@ -170,7 +170,7 @@ function flash($name = '', $message = '', $class = 'alert alert-success')
 
         } elseif(empty($message) && !empty($_SESSION[$name])){
             $class = !empty($_SESSION[$name . '_class']) ? $_SESSION[$name . '_class'] : '';
-            echo '<div class="' . $class .'" role="alert" id="msg-flash">'. $_SESSION[$name] . '</div>';
+            echo '<div class="alert alert-' . $class .'" role="alert" id="msg-flash">'. $_SESSION[$name] . '</div>';
             unset($_SESSION[$name]);
             unset($_SESSION[$name . '_class']);
         }

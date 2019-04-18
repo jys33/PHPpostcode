@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && count($_POST) > 1) {
 			}
 		}
 
-		flash('flash_error', 'Correo electrónico o contraseña incorrectos.', 'alert alert-danger');
+		flash('flash_error', 'Correo electrónico o contraseña incorrectos.', 'danger');
 	}
 }
 // else render form

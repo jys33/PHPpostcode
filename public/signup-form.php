@@ -77,7 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && count($_POST) > 3) {
 	 */
 	if (!empty($trimmed['password'])) {
 		if ( !validatePasswordStrength( $trimmed['password'] ) ) {
-			$data['password_err'] = 'La contraseña debe tener al menos 8 caracteres de longitud y tener al menos una letra mayúscula, un número y un carácter especial.';
+			$data['password_err'] = 'La contraseña debe tener 8 caracteres de longitud, tener al menos una letra mayúscula, un número y un carácter especial.';
 		} else {
 			$data['password'] = $trimmed['password'];
 		}
@@ -117,11 +117,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && count($_POST) > 3) {
 	    ];
 
 	    if ($user->addUser($userData)) {
+	    	// seteamos el mensage flash para la vista
 	        flash('flash_success', 'Su cuenta ha sido creada, ahora puedes iniciar sesión.');
+	        // redirigimos al usuario
 	        redirect('/');
 	    }
 	    // seteamos el mensage flash para la vista
-	    flash('flash_error', 'Su cuenta no ha sido creada, intenté en unos minutos.', 'alert alert-danger');
+	    flash('flash_error', 'Su cuenta no ha sido creada, intenté en unos minutos.', 'danger');
     }
 }
 // else render form
