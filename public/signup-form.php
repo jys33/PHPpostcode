@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && count($_POST) > 3) {
 			$rows = query('SELECT user_id FROM user WHERE useremail=?', $data['useremail']);
 			// Si existe el usuario, le pedimos que ingrese otro email
 			if( count($rows) == 1 ){
-			    $data['useremail_err'] = 'Ese correo electrónico ya está registrado. Prueba con otro.';
+			    $data['useremail_err'] = 'Ya hay una cuenta con ese correo electrónico. Si es tuyo, inicia sesión ahora';
 			}
 		}
 	} else {
