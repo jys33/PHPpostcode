@@ -23,6 +23,9 @@ $data = [
  * procesamos lo que venga del formulario
  */
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && count($_POST) > 3) {
+	echo '<pre>';
+	echo htmlspecialchars(print_r($_POST, true));
+	echo '</pre>';
 	// Sanitizamos el array POST
 	$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 	
