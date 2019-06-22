@@ -21,7 +21,7 @@ require("helpers.php");
 session_start();
 
 // require authentication (LOGUEAR) for most pages
-if (!preg_match("{(?:login|logout|signup-form)\.php$}", $_SERVER["SCRIPT_NAME"]))
+if (!preg_match("{(?:login|logout|signup-form|forgot_password|change_password)\.php$}", $_SERVER["SCRIPT_NAME"]))
 {
     if (empty($_SESSION["user_id"]))
     {

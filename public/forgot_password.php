@@ -6,23 +6,17 @@ require_once 'UserDao.php';
 require_once 'User.php';
 
 $data = [
-	'title' => 'Registrar usuario',
+	'title' => '¿Olvidaste tu contraseña?',
 	'useremail' => '',
-	'nombre' => '',
-	'apellido' => '',
-	'password' => '',
 	// Error
-	'useremail_err' => '',
-	'nombre_err' => '',
-	'apellido_err' => '',
-	'password_err' => ''
+	'useremail_err' => ''
 ];
 
 /**
  * Si el método de solicitud es POST y existen todas las variables 
  * procesamos lo que venga del formulario
  */
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && count($_POST) > 3) {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && count($_POST) > 0) {
 	// Sanitizamos el array POST
 	$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 	
@@ -40,58 +34,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && count($_POST) > 3) {
 			// consultamos la tabla user por el email
 			$rows = query('SELECT user_id FROM user WHERE useremail=?', $data['useremail']);
 			// Si existe el usuario, le pedimos que ingrese otro email
-			if( count($rows) == 1 ){
-			    $data['useremail_err'] = 'Ya hay una cuenta con ese correo electrónico. Si es tuyo, inicia sesión ahora';
+			if( count($rows) == 0 ){
+			    $data['useremail_err'] = 'La dirección de correo electrónico enviada no coincide con alguna cuenta registrada.';
 			}
 		}
 	} else {
-		$data['useremail_err'] = 'Por favor, dinos tu dirección de correo electrónico.';
-	}
-
-	/**
-	 * Validamos el nombre
-	 */
-	if (!empty($trimmed['nombre'])) {
-		$data['nombre'] = $trimmed['nombre'];
-		if( !preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚÑñÜü ]+$/", $data['nombre']) ){
-		    $data['nombre_err'] = 'Sólo se permiten letras y espacios en blanco.';
-		}
-	} else {
-		$data['nombre_err'] = 'Por favor, dinos tu nombre.';
-	}
-
-	/**
-	 * Validamos el apellido
-	 */
-	if (!empty($trimmed['apellido'])) {
-		$data['apellido'] = $trimmed['apellido'];
-		if( !preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚÑñÜü ]+$/", $data['apellido']) ){
-		    $data['apellido_err'] = 'Sólo se permiten letras y espacios en blanco.';
-		}
-	} else {
-		$data['apellido_err'] = 'Por favor, dinos tu apellido.';
-	}
-
-	/**
-	 * Validamos la password
-	 */
-	if (!empty($trimmed['password'])) {
-		if ( !validatePasswordStrength( $trimmed['password'] ) ) {
-			$data['password_err'] = 'La contraseña debe tener 8 caracteres de longitud, tener al menos una letra mayúscula, un número y un carácter especial.';
-		} else {
-			$data['password'] = $trimmed['password'];
-		}
-	} else {
-		$data['password_err'] = 'Crea una contraseña.';
+		$data['useremail_err'] = 'Por favor dinos tu dirección de correo electrónico.';
 	}
 
 	/**
 	 * Si no existe error alguno continuamos el flujo normal, de lo contrario
 	 * volveremos a mostrar el formulario.
 	 */
-	if (empty($data['useremail_err']) && empty($data['nombre_err']) && 
-		empty($data['apellido_err']) && empty($data['password_err'])
-	) {
+	if (empty($data['useremail_err'])) {
 		// Procesamos insertando los datos en la DB y redirigimos
 		/*$sql = 'INSERT INTO user (apellido, nombre, useremail, password, created) VALUES (?,?,?,?,?)';
 	    $dateTime = date("Y-m-d H:i:s");
@@ -109,10 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && count($_POST) > 3) {
 	    $user->assoc($userDao);
 	    // Prueba de inserción en la tabla user
 	    $userData = [
-	        'apellido' => $data['apellido'],
-	        'nombre' => $data['nombre'],
 	        'useremail' => $data['useremail'],
-	        'password' => password_hash($data['password'] . 'Nh-Tw3M-cRW)', PASSWORD_DEFAULT),
 	        'created' => date("Y-m-d H:i:s")
 	    ];
 
@@ -127,4 +79,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && count($_POST) > 3) {
     }
 }
 // else render form
-render("users/signup_form", $data);
+render("users/forgot_password", $data);

@@ -9,37 +9,29 @@
 					<div class="form-group">
 						<label for="email">Tu correo electrónico <span class="required">*</span></label>
 						<input type="email" name="useremail" id="useremail" class="form-control form-control-lg <?= empty($useremail_err) ? '' : 'is-invalid' ?>" autofocus placeholder="ejemplo@email.com" value="<?= htmlspecialchars( $useremail ) ?>" size="20">
-						<div class="invalid-feedback"><?= $useremail_err  ?></div>
+						<div class="invalid-feedback"><?= htmlspecialchars($useremail_err)  ?></div>
 					</div>
 					<div class="form-row">
 						<div class="col-md-6 mb-3">
 							<label for="nombre">Nombre <span class="required">*</span></label>
 							<input type="text" name="nombre" id="nombre" class="form-control form-control-lg <?= empty($nombre_err) ? '' : 'is-invalid' ?>" value="<?= htmlspecialchars( $nombre ) ?>" size="20">
-							<div class="invalid-feedback"><?= $nombre_err ?></div>
+							<div class="invalid-feedback"><?= htmlspecialchars($nombre_err) ?></div>
 						</div>
 						<div class="col-md-6 mb-3">
 							<label for="apellido">Apellido <span class="required">*</span></label>
 							<input type="text" name="apellido" id="apellido" class="form-control form-control-lg <?= empty($apellido_err) ? '' : 'is-invalid' ?>" value="<?= htmlspecialchars( $apellido ) ?>" size="20">
-							<div class="invalid-feedback"><?= $apellido_err  ?></div>
+							<div class="invalid-feedback"><?= htmlspecialchars($apellido_err)  ?></div>
 						</div>
 					</div>
-					<div class="form-group mb-4">
+					<div class="form-group">
 						<label for="password" class="d-block">Crea una contraseña <span class="required">*</span></label>
 						<div id="passwordHelpInline" class="text-muted mb-1 fs-12">Las contraseñas deben tener por lo menos 8 caracteres y tener una combinación de letras, números y otros caracteres.</div>
 						<input type="password" name="password" id="password" class="form-control form-control-lg <?= empty($password_err) ? '' : 'is-invalid' ?>" aria-describedby="passwordHelpInline" size="20">
-						<div class="invalid-feedback"><?= $password_err  ?></div>
+						<div class="invalid-feedback"><?= htmlspecialchars($password_err)  ?></div>
 					</div>
-					<div class="row">
-						<div class="col-6">
-							<a href="/" class="small" style="vertical-align: -6px;">Atrás</a>
-							<!-- <a href="javascript:history.go(-1);">Back</a> -->
-						</div>
-						<div class="col-6">
-							<button type="submit" class="btn btn-custom float-right">Regístrate</button>
-						</div>
-					</div>
+					<button type="submit" class="btn btn-custom btn-block mb-4 btn-lg">Regístrate</button>
 				</form>
-				<!-- <p class="small text-center text-muted">¿Ya tienes una cuenta? <a href="/">Inicia sesión</a></p> -->
+				<p class="small text-center text-muted">¿Ya tienes una cuenta? <a href="/">Inicia sesión</a></p>
 			</div>
 		</div>
 	</div>

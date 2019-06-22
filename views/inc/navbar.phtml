@@ -1,24 +1,22 @@
-<header>
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #344D90;">
-        <a class="navbar-brand" href="/">PHPpostcode</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbar">
-            <?php if ( isset($_SESSION['user_id']) ): ?>
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-                    <!-- <li class="nav-item"><a class="nav-link" href="/about">About</a></li> -->
-                </ul>
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link" href="/logout.php">Log Out</a></li>
-                </ul>
-            <?php else: ?>
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link" href="/signup-form.php">Register</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/login.php">Log In</a></li>
-                </ul>
-            <?php endif ?>
-        </div>
-    </nav>
-</header>
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #344D90;">
+    <a class="navbar-brand" href="/">PHPpostcode</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar">
+        <?php if ( isset($_SESSION['user_id']) ): ?>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                <!-- <li class="nav-item"><a class="nav-link" href="/about">About</a></li> -->
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="/logout.php">Log Out</a></li>
+            </ul>
+        <?php else: ?>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="/signup-form.php">Register</a></li>
+                <li class="nav-item"><a class="nav-link" href="/login.php">Log In</a></li>
+            </ul>
+        <?php endif ?>
+    </div>
+</nav>

@@ -150,7 +150,7 @@ function render($template, $values = [])
 }
 
 /**
- * Show flash errors messages.
+ * Show flash messages.
  */
 function flash($name = '', $message = '', $class = 'success')
 {
