@@ -100,6 +100,24 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         if (classList.length > 1) removeClass(el, classList.slice(1).join(' '));
     }
+
+
+    /**
+     * [show description]
+     * @type {[type]}
+     */
+    let show = document.querySelector("#show");
+    show.onclick = showHide;
+    
+    function showHide() {
+        var x = document.querySelector("#myInput");
+        if (x.type === "password") {
+            x.type = "text";
+            // show.value = 'Ocultar';
+        } else {
+            x.type = "password";
+        }
+    }
 });
 
 // END BACK TO TOP

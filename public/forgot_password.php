@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && count($_POST) > 0) {
 	 */
 	if (empty($data['useremail_err'])) {
 		// Procesamos insertando los datos en la DB y redirigimos
-		/*$sql = 'INSERT INTO user (apellido, nombre, useremail, password, created) VALUES (?,?,?,?,?)';
+		$sql = 'INSERT INTO user (apellido, nombre, useremail, password, created) VALUES (?,?,?,?,?)';
 	    $dateTime = date("Y-m-d H:i:s");
 	    $pwd = password_hash($data['password'] . 'Nh-Tw3M-cRW)', PASSWORD_DEFAULT);
 	    $result = query($sql, $data['apellido'], $data['nombre'], $data['useremail'], $pwd, $dateTime);
@@ -58,22 +58,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && count($_POST) > 0) {
 	        flash('flash_success', 'Su cuenta ha sido creada, ahora puedes iniciar sesión.');
 	        // re dirigimos al usuario a la página de inicio
 	        redirect('/');
-	    }*/
-	    $userDao = new UserDao;
-	    $user = new User;
-	    $user->assoc($userDao);
-	    // Prueba de inserción en la tabla user
-	    $userData = [
-	        'useremail' => $data['useremail'],
-	        'created' => date("Y-m-d H:i:s")
-	    ];
-
-	    if ($user->addUser($userData)) {
-	    	// seteamos el mensage flash para la vista
-	        flash('flash_success', 'Su cuenta ha sido creada, ahora puedes iniciar sesión.');
-	        // redirigimos al usuario
-	        redirect('/');
 	    }
+	    // $userDao = new UserDao;
+	    // $user = new User;
+	    // $user->assoc($userDao);
+	    // // Prueba de inserción en la tabla user
+	    // $userData = [
+	    //     'useremail' => $data['useremail'],
+	    //     'created' => date("Y-m-d H:i:s")
+	    // ];
+
+	    // if ($user->addUser($userData)) {
+	    // 	// seteamos el mensage flash para la vista
+	    //     flash('flash_success', 'Su cuenta ha sido creada, ahora puedes iniciar sesión.');
+	    //     // redirigimos al usuario
+	    //     redirect('/');
+	    // }
 	    // seteamos el mensage flash para la vista
 	    flash('flash_error', 'Su cuenta no ha sido creada, intenté en unos minutos.', 'danger');
     }

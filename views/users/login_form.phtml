@@ -3,7 +3,6 @@
 		<div class="row">
 			<div class="container container--login">
 				<!-- <img class="img-fluid mx-auto d-block mb-5" style="width: 65px; height: 65px" src="" alt=""> -->
-				<?php flash('flash_success'); flash('flash_error'); ?>
 				<h1 class="mb-1 text-center" style="font-size: 34px">Inicia sesión</h1>
 				<p class="fs-14 text-muted text-center mb-5">Complete sus datos para ingresar en la app.</p>
 				<form id="loginform" action="/login.php" method="POST">
@@ -15,8 +14,12 @@
 					<div class="form-group">
 						<label for="password">Contraseña</label>
 						<a class="form-sublink" href="/forgot_password.php">¿Olvidó su contraseña?</a>
-						<input type="password" name="password" class="form-control form-control-lg <?= empty($password_err) ? '' : 'is-invalid' ?>" size="20">
+						<input type="password" name="password" id="myInput" class="form-control form-control-lg <?= empty($password_err) ? '' : 'is-invalid' ?>" size="20">
 						<div class="invalid-feedback"><?= $password_err ?></div>
+					</div>
+					<div class="form-group form-check">
+						<input type="checkbox" class="form-check-input" id="show">
+						<label class="form-check-label text-muted" for="show" style="cursor: pointer; font-weight: normal;">Mostrar contraseña</label>
 					</div>
 					<button type="submit" class="btn btn-custom btn-lg btn-block mb-4">Ingresar</button>
 				</form>
